@@ -16,6 +16,7 @@ public class Matrix
       this.row=2;
       this.col=2;
       this.elements=new int[row][col];
+      populate(-100,100);
       
    }  
    public Matrix(int col,int row)
@@ -23,7 +24,7 @@ public class Matrix
       this.row=row;
       this.col=col;
       this.elements=new int[row][col];
-      populate(0,99);
+      populate(-100,100);
       
    }
    public Matrix(int[][]otherElements)
@@ -74,17 +75,22 @@ public class Matrix
    {
       int[][]result=new int[row][om.col];
       for(int i=0;i<this.row;i+=1)
+      {
          for(int j=0;j<om.col;j+=1)
+         {
             for(int k=0;k<this.col;k+=1)
             {
-               result[i][i]+=this.elements[i][k]+om.elements[k][j];
+               result[i][j]+=this.elements[i][k]*om.elements[k][j];
             }
-      return new Matrix(result);
+     
+         }
+      }
+       return new Matrix(result);
    }
    
-   public Matrix Hadamard(Matrix om)
+   public Matrix hadamard(Matrix om)
    {
-       Matrix result = new Matrix(this.row, this.col);
+       int[][]result = new int[row][col];
        for (int i=0;i<this.row;i+=1)
            for(int j=0; j<this.col; j+=1)
            {
@@ -102,7 +108,7 @@ public class Matrix
        {
            for(int j:row)
            {
-               result +=""+j+"";
+               result +=" "+j+" ";
            }
            result +="\n";
        }

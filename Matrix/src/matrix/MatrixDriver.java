@@ -16,7 +16,10 @@ public class MatrixDriver {
         Matrix mtx2 = new Matrix();
         
         
-        Matrix mtx3 = mtx.add(mtx2);
+        Matrix mtx3 = mtx.clone();
+        
+        System.out.println(mtx.toString());
+        System.out.println(mtx.clone().toString());
         System.out.println(mtx3.toString());
     }
 
